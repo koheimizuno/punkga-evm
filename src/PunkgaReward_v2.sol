@@ -93,7 +93,7 @@ contract PunkgaRewardV2 is
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
 
-        emit RewardMinted(to, tokenId);
+        emit RewardMinted(to, tokenId)
     }
 
     function _authorizeUpgrade(address newImplementation) internal override onlyOwner {}
