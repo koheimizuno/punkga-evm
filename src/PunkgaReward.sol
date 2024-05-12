@@ -9,7 +9,7 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
-contract MyToken is
+contract PunkgaReward is
     Initializable,
     ERC721Upgradeable,
     ERC721URIStorageUpgradeable,
@@ -33,11 +33,9 @@ contract MyToken is
     }
 
     function initialize(
-        address initialOwner,
-        string memory name,
-        string memory symbol
+        address initialOwner
     ) public initializer {
-        __ERC721_init(name, symbol);
+        __ERC721_init("PunkgaReward", "PGR");
         __ERC721URIStorage_init();
         __ERC721Pausable_init();
         __Ownable_init(initialOwner);
