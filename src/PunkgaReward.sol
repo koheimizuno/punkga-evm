@@ -17,6 +17,11 @@ contract PunkgaReward is
     OwnableUpgradeable,
     UUPSUpgradeable
 {
+    // Events emit by the contract
+    event RewardMinted(address indexed to, uint256 indexed tokenId);
+
+    event UserInfoUpdated(address indexed user, uint256 level, uint64 totalXp);
+
     uint256 private _nextTokenId;
 
     struct UserInfo {
@@ -32,9 +37,7 @@ contract PunkgaReward is
         _disableInitializers();
     }
 
-    function initialize(
-        address initialOwner
-    ) public initializer {
+    function initialize(address initialOwner) public initializer {
         __ERC721_init("PunkgaReward", "PGR");
         __ERC721URIStorage_init();
         __ERC721Pausable_init();
@@ -50,10 +53,12 @@ contract PunkgaReward is
         _unpause();
     }
 
-    function safeMint(address to, string memory uri) public onlyOwner {
+    function mintReward(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _nextTokenId++;
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
+
+        emit RewardMinted(to, tokenId);
     }
 
     function _authorizeUpgrade(
@@ -102,5 +107,7 @@ contract PunkgaReward is
         uint64 _totalXp
     ) public onlyOwner {
         userInfos[_user] = UserInfo(_user, _level, _totalXp);
+
+        emit UserInfoUpdated(_user, _level, _totalXp);
     }
 }
