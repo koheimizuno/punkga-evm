@@ -4,3 +4,7 @@ out = "out"
 libs = ["lib"]
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+build_info = true
+extra_output = ["storageLayout"]
+[rpc_endpoints]
+aura = "https://jsonrpc.serenity.aura.network"
