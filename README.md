@@ -56,6 +56,11 @@ $ forge script script/PunkgaReward_deployImpl.s.sol --rpc-url aura --private-key
 $ forge script script/PunkgaReward_deployProxy.s.sol --rpc-url aura --private-key $PRIVATE_KEY --broadcast 
 ```
 
+### Verify
+```shell
+$ forge verify-contract --verifier sourcify --verifier-url https://indexer-v2.dev.aurascan.io/sourcify/ --rpc-url https://jsonrpc.serenity.aura.network/  <contract_address>  src/PunkgaReward.sol:PunkgaReward
+```
+
 ### Cast
 
 ```shell
