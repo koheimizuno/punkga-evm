@@ -126,8 +126,10 @@ contract PunkgaRewardV2 is
         return super.supportsInterface(interfaceId);
     }
 
-    function updateUserInfo(address _user, uint64 _level, uint64 _totalXp, Proof memory _proofs, uint256 requestId) public {
-        bytes memory encodeData = abi.encodePacked(_user, _level, msg.sender, _totalXp, requestId);
+    function updateUserInfo(address _user, uint64 _level, uint64 _totalXp, Proof memory _proofs, uint256 _requestId) public {
+        uint256 _level256 = _level;
+        uint256 _totalXp256 = _totalXp;
+        bytes memory encodeData = abi.encodePacked(_user, msg.sender, _level256, _totalXp256, _requestId);
         uint256 pid = uint256(keccak256(abi.encode(_proofs.r, _proofs.s, _proofs.v)));
         require(
             usedProof[pid] == false && _verifyProof(encodeData, _proofs),
