@@ -18,7 +18,7 @@ contract PunkgaRewardDeployProxy is Script {
             msg.sender // Initial owner/admin of the contract
         );
 
-        // Deploy the proxy contract with the implementation address and initializer
+        // Deploy the proxy contract with the implementation address and initializer.
         ERC1967Proxy proxy = new ERC1967Proxy(_implementation, data);
 
         vm.stopBroadcast();
