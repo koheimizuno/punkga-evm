@@ -110,13 +110,4 @@ contract PunkgaReward is
 
         emit UserInfoUpdated(_user, _level, _totalXp);
     }
-       function updateUserInfo(
-        address _user,
-        uint64 _level,
-        uint64 _totalXp
-    ) public onlyOwner {
-        userInfos[_user] = UserInfo(_user, _level, _totalXp);
-
-        emit UserInfoUpdated(_user, _level, _totalXp);
-    }
 }
