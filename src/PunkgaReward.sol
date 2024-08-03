@@ -102,7 +102,7 @@ contract PunkgaReward is
     function updateUserInfo(
         address _user,
         uint64 _level,
-        uint64 _totalXp
+        uint64 _totalXp,
     ) public onlyOwner {
         userInfos[_user] = UserInfo(_user, _level, _totalXp);
 
